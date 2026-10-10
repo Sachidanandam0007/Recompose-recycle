@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Recompose Recycling | We recycle it all</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cr:#f8f6f0;--gr:#bdbab2;--gn:#4a6e4c;--ink:#2b2b28;--sea:#27506a;--s:'Newsreader',Georgia,serif;--f:'Figtree',Arial,sans-serif;color-scheme:light;box-sizing:border-box}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.7 var(--f);color:var(--ink);background:var(--sea);background-image:radial-gradient(ellipse at 20% 10%,#7fa5bd55,transparent 40%),radial-gradient(ellipse at 80% 40%,#9fc0d044,transparent 35%),radial-gradient(ellipse at 10% 80%,#0f2f4466,transparent 45%),repeating-radial-gradient(circle at 50% 50%,#ffffff0a 0 3px,transparent 3px 11px);background-attachment:fixed;padding:0 clamp(8px,1.6vw,24px) env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:var(--s);font-weight:300;margin:0;line-height:1.05;letter-spacing:-.01em}
+.step{font:600 10.5px var(--f);letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:14px}
+.pn{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.cr{background:var(--cr)}.gy{background:var(--gr);color:#fff}.gn{background:var(--gn);color:#fff}
+.in{width:100%;max-width:1200px;margin:auto;padding:90px clamp(20px,5vw,60px);position:relative;z-index:2}
+header{position:fixed;left:clamp(8px,1.6vw,24px);right:clamp(8px,1.6vw,24px);top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(20px,4vw,48px);mix-blend-mode:difference;color:#fff;font:500 14px var(--f)}
+header b{font:400 22px var(--s);letter-spacing:.02em}header button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:8px}
+.menu{position:fixed;inset:0;z-index:35;background:var(--gn);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;clip-path:circle(0 at 95% 4%);transition:clip-path .8s cubic-bezier(.7,0,.2,1)}.menu.o{clip-path:circle(150% at 95% 4%)}
+.menu a{font:300 clamp(36px,7vw,72px)/1.15 var(--s);color:#fff;text-decoration:none}.menu a:hover{font-style:italic}
+:focus-visible{outline:2px solid var(--gn);outline-offset:3px}
+/* hero */
+.hero h1{font-size:clamp(44px,7.4vw,110px);color:#3a3a36}.hero h1 span{color:#b4b2aa}
+.cards{display:flex;gap:18px;margin-top:46px;transform:translateX(var(--cx,0))}
+.cd{flex:1;min-width:240px}.cd .im{background:#eceae4;aspect-ratio:1.35;display:grid;place-items:center;overflow:hidden}.cd .im svg{width:62%;height:84%;transition:transform .8s}.cd:hover .im svg{transform:scale(1.1) rotate(-4deg)}
+.cd small{display:block;font:600 10px var(--f);letter-spacing:.14em;margin-top:10px}
+.arr{position:absolute;right:6%;top:70px;width:clamp(90px,12vw,170px);color:#d6d4cc;z-index:1}
+.rot{animation:spin 18s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.msg{max-width:360px;margin-left:auto;font-size:16px;margin-top:60px}
+.torn{position:absolute;left:0;right:0;bottom:-1px;height:70px;width:100%;display:block;z-index:3}
+/* collect */
+.cp h2{font-size:clamp(46px,6vw,84px);margin-bottom:16px}.cp p{max-width:330px;font-size:14.5px;opacity:.9}
+.cont{position:absolute;left:0;right:0;bottom:0;height:46%;z-index:1}.cont svg{position:absolute;bottom:-4%;height:100%;width:auto;will-change:transform}
+/* sort */
+.sort{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}.sort h2{font-size:clamp(46px,6vw,84px)}
+.ch{position:relative;height:520px;overflow:hidden}.ch .it{position:absolute;left:50%;will-change:transform}
+/* recycle */
+.rc{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;text-align:center}.rc h2{font-size:clamp(46px,6vw,84px)}.rc p{max-width:380px;margin:16px auto 0;font-size:15px;opacity:.9}
+.vs{position:relative;height:560px}.vs .pl{position:absolute;will-change:transform}
+/* reuse */
+.ru{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}.ru h2{font-size:clamp(46px,6vw,84px)}.ru p{max-width:360px;font-size:15px}
+.disc{position:relative;aspect-ratio:1.2;display:grid;place-items:center}.disc .pad{position:absolute;bottom:14%;width:92%;height:26%;border-radius:50%;background:#efede6;box-shadow:0 30px 40px -20px #0003}
+/* details */
+.tb{display:grid;grid-template-columns:200px 1fr;gap:6px 30px;max-width:820px;margin-top:30px;font-size:15px}.tb span:nth-child(odd){font:600 11px var(--f);letter-spacing:.12em;text-transform:uppercase;color:#888;padding-top:4px}.tb span{padding-bottom:12px;border-bottom:1px solid #e1ded5}
+.stat{font-size:clamp(28px,3.6vw,48px);max-width:820px;font-family:var(--s);font-weight:300;line-height:1.2}
+/* cta */
+.cta{text-align:center;flex-direction:column;justify-content:center}.cta h2{font-size:clamp(46px,7vw,100px);margin:18px 0 34px}
+.pill{display:inline-block;background:#1c1f1b;color:#fff;font:600 11px var(--f);letter-spacing:.14em;text-transform:uppercase;padding:16px 30px;border-radius:99px;text-decoration:none;border:0;transition:.25s}.pill:hover{background:#fff;color:#1c1f1b;transform:translateY(-3px)}
+.pill.l{background:#ffffff26;backdrop-filter:blur(6px)}
+.photo{background:linear-gradient(#5d7f5acc,#2f4a33),repeating-linear-gradient(90deg,#4d7a4a 0 40px,#6a9468 40px 90px);color:#fff;text-align:center}
+.photo h2{font-size:clamp(40px,6vw,84px);margin:12px 0 26px}
+.dot{width:36px;height:36px;border:1px solid #fff9;border-radius:50%;position:fixed;pointer-events:none;z-index:60;left:0;top:0;transform:translate(-100px,-100px);transition:width .25s,height .25s;mix-blend-mode:difference}
+footer{padding:26px 10px 20px;color:#dfeaf0;font-size:13.5px;text-align:center}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1s cubic-bezier(.2,.8,.2,1)}.rv.on{opacity:1;transform:none}
+@media(max-width:820px){.sort,.rc,.ru{grid-template-columns:1fr}.tb{grid-template-columns:1fr}.cards{flex-wrap:nowrap;overflow-x:auto;transform:none;padding-bottom:10px}.cd{min-width:210px}.msg{margin:40px 0 0}.ch{height:380px}.vs{height:420px}.pn{min-height:90vh}.dot{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head><body>
+<header><b>Recompose</b><button id="mb" aria-expanded="false">Menu</button></header>
+<nav class="menu" id="menu"><a href="#top">Home</a><a href="#collect">Collect</a><a href="#sort">Sort</a><a href="#recycle">Recycle</a><a href="#reuse">Re-use</a><a href="#company">Company</a><a href="#contact">Contact</a></nav>
+<div class="dot" id="dot"></div>
+<main>
+<section class="pn cr hero" id="top"><svg class="arr rot" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"><path d="M50 12l16 28H34zM76 62l-16 28-8-14M24 62l-8 16 28 6" /></svg>
+<div class="in"><h1>We recycle <span>it all.</span></h1>
+<div class="cards" id="cards">
+<div class="cd"><div class="im"><svg viewBox="0 0 100 120"><rect x="22" y="22" width="56" height="84" fill="#fff" stroke="#bbb"/><path d="M30 38h40M30 48h40M30 58h28" stroke="#c7c2b6" stroke-width="3"/><rect x="30" y="68" width="40" height="26" fill="#9bb7cc"/></svg></div><small>TYPE 1 · PAPER</small></div>
+<div class="cd"><div class="im"><svg viewBox="0 0 100 120"><rect x="42" y="8" width="16" height="22" fill="#cfe5d8"/><rect x="28" y="28" width="44" height="82" rx="10" fill="#9bcdb0" opacity=".9"/><rect x="34" y="40" width="6" height="56" fill="#fff" opacity=".6"/></svg></div><small>TYPE 2 · GLASS</small></div>
+<div class="cd"><div class="im"><svg viewBox="0 0 100 120"><path d="M24 30h52l-6 78H30z" fill="#fff" stroke="#bbb"/><rect x="20" y="22" width="60" height="10" fill="#d93f2e"/><path d="M50 56l-9 15h18z" fill="none" stroke="#4a6e4c" stroke-width="3"/></svg></div><small>TYPE 3 · OTHER NON-METAL</small></div></div>
+<p class="msg rv">Recompose Recycling collects and recycles non-metal waste and scrap from Coimbatore: old newspapers, rejected glass articles and used non-metallic items.</p></div>
+<svg class="torn" data-c="#bdbab2"></svg></section>
+
+<section class="pn gy cp" id="collect"><div class="in"><span class="step">Step 1</span><h2>Collect</h2><p>Non-metal waste is collected from homes, offices and businesses and brought to our facility.</p></div>
+<div class="cont" id="cont"></div></section>
+
+<section class="pn cr" id="sort"><div class="in sort"><div><span class="step">Step 2</span><h2>Sort</h2><p style="max-width:330px;font-size:15px">Once received, the waste is separated by material: paper, glass and other non-metal items.</p></div><div class="ch" id="ch"></div></div><svg class="torn" data-c="#4a6e4c"></svg></section>
+
+<section class="pn gn" id="recycle"><div class="in rc"><div><span class="step">Step 3</span><h2>Recycle</h2><p>Sorted material is processed so it can go back into use instead of landfill.</p></div><div class="vs" id="vs"></div></div></section>
+
+<section class="pn cr" id="reuse"><div class="in ru"><div><span class="step">Step 4</span><h2>Re-use</h2><p>Recycled material returns to the market as new products.</p></div>
+<div class="disc"><div class="pad"></div><svg id="prod" viewBox="0 0 200 160" style="width:70%;position:relative"><g fill="#efe9dc" stroke="#d8d1bf" stroke-width="2"><circle cx="70" cy="80" r="42"/><circle cx="130" cy="86" r="40"/></g><g fill="#cfc8b8"><circle cx="58" cy="66" r="3"/><circle cx="80" cy="92" r="3"/><circle cx="120" cy="70" r="3"/><circle cx="142" cy="98" r="3"/><circle cx="66" cy="100" r="2"/><circle cx="132" cy="108" r="2"/></g><circle cx="70" cy="80" r="16" fill="#f8f6f0"/><circle cx="130" cy="86" r="15" fill="#f8f6f0"/></svg></div></div><svg class="torn" data-c="#f8f6f0"></svg></section>
+
+<section class="pn cr" id="company" style="min-height:0"><div class="in"><span class="step">The company</span><p class="stat rv">Recompose Recycling Private Limited was incorporated on 1 June 2020 and is registered in Coimbatore. Active, with two directors.</p>
+<div class="tb rv"><span>Name</span><span>Recompose Recycling Private Limited</span><span>CIN</span><span>U37200TZ2020PTC033845</span><span>Registrar</span><span>ROC Coimbatore</span><span>Activity (NIC 3720)</span><span>Recycling of non-metal waste and scrap</span><span>Directors</span><span>Duraisamy Saran Raj, Chandrasekaran Prashanth</span><span>Address</span><span>1/235, Bhagiyalakshmi Nagar, Muthalipalayam, Arasur (Post), Coimbatore, Tamil Nadu 641407</span></div></div></section>
+
+<section class="pn photo" id="photo" style="min-height:70vh"><div class="in"><span class="step">Coimbatore, India</span><h2>How non-metal<br>recycling works</h2><a class="pill l" href="#collect">Learn more</a></div></section>
+
+<section class="pn gn cta" id="contact"><svg width="44" viewBox="0 0 44 30" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M4 6q9-6 18 0t18 0M4 15q9-6 18 0t18 0M4 24q9-6 18 0t18 0"/></svg><h2>Ready to make<br>your mark?</h2><a class="pill" href="mailto:recomposecbe@gmail.com?subject=Recycling%20enquiry">Take action</a><p style="margin-top:26px;font-size:14px;opacity:.85">recomposecbe@gmail.com · Arasur, Coimbatore 641407</p></section>
+</main>
+<footer>© 2026 Recompose Recycling Pvt Ltd · CIN U37200TZ2020PTC033845</footer>
+<script>
+var $=function(s){return document.querySelector(s)},$$=function(s){return[].slice.call(document.querySelectorAll(s))};
+// torn edges
+$$('.torn').forEach(function(s){var p='0,70',x=0;s.setAttribute('viewBox','0 0 1200 70');s.setAttribute('preserveAspectRatio','none');var pts=[];for(var i=0;i<=60;i++)pts.push((i*20)+','+(18+Math.random()*34+(i%3?0:8)));s.innerHTML='<polygon fill="'+s.dataset.c+'" points="0,70 '+pts.join(' ')+' 1200,70"/>'});
+// containers
+var cc=['#2f6b3c','#d9582f','#e9a63f','#cfd2cb','#2f6b3c','#d9582f'],ch='';
+cc.forEach(function(c,i){ch+='<svg viewBox="0 0 260 200" style="left:'+(i*20-6)+'%;height:'+(100-i*5)+'%;bottom:'+(i*0)+'%"><rect x="6" y="20" width="248" height="170" fill="'+c+'"/>'+Array.apply(null,Array(14)).map(function(_,k){return'<rect x="'+(14+k*17)+'" y="28" width="7" height="154" fill="#00000030"/>'}).join('')+'<rect x="6" y="14" width="248" height="10" fill="#0003"/></svg>'});
+$('#cont').innerHTML=ch;
+// sort items
+var it=[['#fff','#9bb7cc',44,56],['#9bcdb0','#cfe5d8',34,70],['#d93f2e','#fff',50,40],['#fff','#9bb7cc',44,56],['#9bcdb0','#cfe5d8',34,70],['#d93f2e','#fff',50,40],['#fff','#9bb7cc',44,56],['#9bcdb0','#cfe5d8',34,70]];
+$('#ch').innerHTML='<svg viewBox="0 0 300 520" style="position:absolute;inset:0;width:100%;height:100%"><path d="M60 0v380q0 70 90 70t90-70V0" fill="none" stroke="#d6d3c9" stroke-width="18" stroke-linecap="round"/></svg>'+it.map(function(d,i){return'<svg class="it" viewBox="0 0 60 80" style="width:'+d[2]+'px;height:'+d[3]+'px;margin-left:'+(-d[2]/2+((i%3)-1)*22)+'px"><rect x="4" y="4" width="52" height="72" rx="6" fill="'+d[0]+'" stroke="#cfcabd"/><rect x="12" y="14" width="36" height="14" fill="'+d[1]+'"/></svg>'}).join('');
+// pellets + vessel
+var pl='<svg viewBox="0 0 300 560" style="position:absolute;inset:0;width:100%;height:100%"><path d="M70 360h160l-8 150q-2 24-24 24h-96q-22 0-24-24z" fill="#ffffff22" stroke="#fff" stroke-width="2"/><path d="M82 440h136l-4 70q-2 16-18 16h-92q-16 0-18-16z" fill="#f2b4a2" opacity=".85" id="lv"/></svg>';
+for(var i=0;i<16;i++)pl+='<svg class="pl" viewBox="0 0 20 40" style="left:'+(34+(i*37)%32)+'%;top:0;width:18px;height:34px"><rect width="20" height="40" rx="6" fill="'+['#f1d8c8','#c9d9c3','#e9a89a','#fff'][i%4]+'"/></svg>';
+$('#vs').innerHTML=pl;
+// menu, cursor, reveal
+$('#mb').onclick=function(){var o=$('#menu').classList.toggle('o');this.textContent=o?'Close':'Menu';this.setAttribute('aria-expanded',o)};$$('.menu a').forEach(function(a){a.onclick=function(){$('#menu').classList.remove('o');$('#mb').textContent='Menu'}});
+addEventListener('mousemove',function(e){$('#dot').style.transform='translate('+(e.clientX-18)+'px,'+(e.clientY-18)+'px)'});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.2});$$('.rv').forEach(function(e){io.observe(e)});
+// scroll-driven motion
+function pr(el){var r=el.getBoundingClientRect(),h=innerHeight;return Math.min(1,Math.max(0,(h-r.top)/(h+r.height)))}
+function tick(){var h=pr($('#top'));$('#cards').style.setProperty('--cx',(-h*90)+'px');
+var c=pr($('#collect'));$$('#cont svg').forEach(function(s,i){s.style.transform='translateX('+((1-Math.min(1,c*1.6))*(60+i*40))+'px) scale('+(.9+c*.1)+')'});
+var s=pr($('#sort'));$$('#ch .it').forEach(function(e,i){var t=(s*1.5-i*.1);t=Math.max(0,Math.min(1,t));var y=-80+t*(i%2?400:360);e.style.transform='translateY('+y+'px) rotate('+(t*(i%2?-60:50))+'deg)';e.style.opacity=t<=0||t>=1?0:1});
+var r=pr($('#recycle'));$$('#vs .pl').forEach(function(e,i){var t=((r*2.2)-i*.06)%1.4;t=Math.max(0,Math.min(1,t));e.style.transform='translateY('+(t*430)+'px) rotate('+(t*200+i*20)+'deg)';e.style.opacity=t<=0?0:1});
+$('#lv').setAttribute('transform','translate(0,'+((1-Math.min(1,r*1.6))*70)+')');
+var u=pr($('#reuse'));$('#prod').style.transform='rotate('+((u-.5)*18)+'deg) translateY('+((.5-u)*40)+'px)';requestAnimationFrame(tick)}
+tick();
+</script></body></html>
